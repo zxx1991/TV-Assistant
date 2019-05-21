@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>频道收视</title>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/channel.css">
+</head>
+
+<body>
+<div class="c_all_box">
+    <div id="header_box"></div>
+
+    <div class="c_main_box">
+        <!---------------------------------------------------------------------- left --------------->
+        <div class="c_main_left">
+            <!-------------- left-top --------------->
+            <div class="comtent_top">
+                <!--收视类型分析-->
+                <div style="height: calc(50% - 15px); margin-bottom: 30px;" class="cheart_comtent cheart_border">
+                    <div class="text_img" style="background-image: url('./images/viewing_type_text.png')"></div>
+                    <div id="viewing_type" style="height: 76%; width: 100%; position: absolute; top: 12%;"></div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+                </div>
+                <!--直播频道分布-->
+                <div style="height: calc(50% - 15px);" class="cheart_comtent cheart_border">
+                    <div class="text_img" style="background-image: url('./images/live_channel_text.png')"></div>
+                    <div id="live_channel" style="height: 100%;"></div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <img class="right_angle_img" src="./images/right_angle_img.png" alt="">
+                </div>
+
+            </div>
+            <!-------------- left-botton --------------->
+            <div class="comtent_bottom">
+                <!--回看频道分布-->
+                <div class="cheart_comtent cheart_border">
+                    <div class="text_img" style="background-image: url('images/lookback_channel_text.png')"></div>
+                    <div id="lookback_channel" style="height: 100%;"></div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+                </div>
+            </div>
+        </div>
+
+
+        <!---------------------------------------------------------------------- right --------------->
+        <div class="c_main_right">
+            <!-------------- right-top --------------->
+            <div class="comtent_top">
+                    <div class="cheart_comtent cheart_border" style="padding: 20px;">
+                    <div class="text_img" style="background-image: url('./images/main_chart_title_text.png')"></div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+                        <!--点播分屏点击关注度-->
+                    <div class="main_chart" style="width: calc(29% - 12px); margin-right: 12px;">
+                        <div class="main_chart_title"><p>点播分屏点击关注度</p></div>
+                        <div class="main_chart_bar" style="padding:0 10px 20px 20px;" id="demand_focus"></div>
+                    </div>
+                        <!--EPG访问占比-->
+                    <div class="main_chart" style="width: calc(29% - 12px); margin-right: 12px;">
+                        <div class="main_chart_title"><p>EPG访问占比</p></div>
+                        <div class="main_chart_bar" id="EPG_access"></div>
+                    </div>
+                        <!--热门EPG访问情况-->
+                    <div class="main_chart" style="width: 42%;">
+                        <div class="main_chart_title"><p>热门EPG访问情况</p></div>
+                        <div style=" height: calc(100% - 40px - 54px);">
+                            <div class="EPG_statu" id="EPG_hot_A"></div>
+                            <div class="EPG_statu" id="EPG_hot_B"></div>
+                            <div class="EPG_statu" id="EPG_hot_C"></div>
+                            <div class="EPG_statu" id="EPG_hot_D"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-------------- right-botton --------------->
+            <div class="comtent_bottom">
+                <!--直播频道TOP10-->
+                <div style="width: calc(36% - 25px); margin-right: 25px; float: left;" class="cheart_comtent cheart_border">
+                    <div class="text_img" style="background-image: url('./images/live_channel_top_text.png')"></div>
+                    <div id="live_channel_top" style="padding: 25px 15px 15px 15px;">
+                        <table>
+                            <tr>
+                                <th>排名</th>
+                                <th>频道名称</th>
+                                <th>收视用户数</th>
+                                <th>同期增幅</th>
+                            </tr>
+                            <tr>
+                                <td><span class="circle">1</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="circle">2</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="circle">3</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">4</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">5</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">6</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">7</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">8</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">9</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">10</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+                </div>
+                <!--点播频道TOP10-->
+                <div style="width: calc(36% - 25px); margin-right: 25px; float: left;" class="cheart_comtent cheart_border">
+                    <div class="text_img" style="background-image: url('./images/demand_channel_top_text.png')"></div>
+                    <div id="demand_channel_top" style="padding: 25px 15px 15px 15px;">
+                        <table>
+                            <tr>
+                                <th>排名</th>
+                                <th>频道名称</th>
+                                <th>收视用户数</th>
+                                <th>同期增幅</th>
+                            </tr>
+                            <tr>
+                                <td><span class="circle">1</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="circle">2</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="circle">3</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">4</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">5</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">6</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">7</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">8</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">9</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+                            <tr>
+                                <td><span class="normal">10</span></td>
+                                <td>逆流而上的你</td>
+                                <td>68.258</td>
+                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+                </div>
+                <!--热门收藏-->
+                <div style="width: 28%; float: left;" class="cheart_comtent cheart_border">
+                    <div class="text_img" style="background-image: url('./images/hot_collection_text.png')"></div>
+                    <div id="hot_collection" style="height: 70%; width: 80%; position: absolute; top: 15%; left: 10%;"></div>
+                    <img class="angle_img" src="./images/angle_img.png" alt="">
+                    <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script src="./js/randomtagdiv.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/channel.js"></script>
+</body>
+</html>

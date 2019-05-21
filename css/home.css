@@ -1,0 +1,58 @@
+.all_box{
+    min-height: 100vh;
+    background: url("../images/bg.png") no-repeat center center;
+    background-size: cover;
+}
+
+
+
+.mainDisplayFlex{height: calc(100vh - 98px); display: flex; flex-direction: column;}
+
+
+/*---------------  main_left  ------------------------------------------------------------------------*/
+.textData{ margin-top: 10px; padding:10px 20px 5px 20px; background: url('../images/textData_border.png') no-repeat; background-size: 100% 100%;}
+.textData p{ color: #D3E1F8; font-size: 18px; margin-bottom: 18px;}
+.textData h1{ font-size: 30px; color: #07F0FF; margin-bottom: 18px; font-family: myFontFamily_1;}
+/*city_ARPU_chart*/
+.city_ARPU{ margin-top: 40px; border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.city_ARPU .text_img{background: url('../images/city_ARPU_text.png') center center no-repeat;}
+
+/*user_ARPU_chart*/
+.user_ARPU{ margin-top: 40px; border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.user_ARPU .text_img{background: url('../images/user_ARPU_text.png') center center no-repeat;}
+
+
+
+
+
+
+/*---------------  main_right  ------------------------------------------------------------------------*/
+.user_pay{ border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.plate_pay{ margin-top: 40px; border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.tv_taobao{margin-top: 40px;height: 180px; border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.tv_taobao_content{width: 98%;margin: 40px auto 0 auto;display: flex;align-items: center;justify-content: space-between}
+.tv_taobao_content .inner_top{color: #D3E1F8;font-size: 18px;text-align: center; height: 50px;}
+.tv_taobao_content .inner_bottom{color: #01D9F3;font-size: 24px;text-align: center}
+.tv_taobao_content .inner_bottom .cell{font-size: 13px}
+
+
+
+
+
+/*---------------  main_chart  ------------------------------------------------------------------------*/
+.mobile_box_user{width: 90%;margin: 0 auto;display: flex;justify-content: space-between;align-items: center;}
+.mobile_box_user .mobile_box_user_inner{}
+.mobile_box_user .mobile_box_user_inner .title{color: #FDCA31; font-size: 18px; text-align: left}
+.mobile_box_user .mobile_box_user_inner .title2{color: #D3E1F8; font-size: 18px;text-align: right}
+.mobile_box_user .mobile_box_user_inner .number{font-size: 30px; color: #07F0FF; margin-bottom: 12px; font-family: myFontFamily_1;line-height: 50px;}
+
+/*mobile_box_user*/
+.mobile_user_week{ margin-top: 10px; border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.mobile_user_week .text_img{background: url('../images/mobile_user_week.png') center center no-repeat;}
+
+/*add_user_box*/
+.add_user_box{ margin-top: 10px;border-bottom: 1px solid #2c90db; border-left: 1px solid #2c90db; border-right: 1px solid #2c90db; position: relative;}
+.add_user_box .text_img{background: url('../images/user_week.png') center center no-repeat;}
+
+
+

@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>家庭产品业务规模</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
+</head>
+
+<body>
+<div class="all_box">
+    <div id="header_box"></div>
+
+    <div class="main_box" style=" padding: 20px;">
+
+        <div style=" width: 19.5%; float: left;" class="main_left mainDisplayFlex">
+            <!--数据-->
+            <div class="textData">
+                <p>宽带日均新增用户(万)</p>
+                <h1 id="averNetUser">0</h1>
+                <p>智能组网累计发展(万)</p>
+                <h1 id="smartNetUser">0</h1>
+                <p>家庭安防产品装机用户(万)</p>
+                <h1 id="homeNetUser">0</h1>
+            </div>
+            <!--地市用户ARPU-->
+            <div style="flex: 1;" class="city_ARPU boxSizing">
+                <div class="text_img"></div>
+                <div id="city_ARPU_chart"></div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+            <!--用户ARPU-->
+            <div style="flex: 1;" class="user_ARPU boxSizing">
+                <div class="text_img"></div>
+                <div id="user_ARPU_chart"></div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+        </div>
+
+
+        <div style=" width: 33%; float: left; margin-top: 20px;position: relative; padding: 0 30px;height: 86vh;" class="main_map">
+            <div id="fujian_map" style="height: 68vh;"></div>
+            <div id="fujian_city_map" style="height:68vh; display: none;"></div>
+            <div id="map_chart_data" style="height: 220px; width: 40%; position: absolute; right: 40px; bottom: 0;"></div>
+        </div>
+
+
+        <div style=" width: 27.5%; float: left; padding-right: 30px;" class="main_chart mainDisplayFlex">
+            <div class="mobile_box_user">
+                <div class="mobile_box_user_inner">
+                    <p class="title">魔百和到达用户(万)</p>
+                    <p class="number" id="mobileArriveUser">0</p>
+                </div>
+                <div class="mobile_box_user_inner">
+                    <p class="title title2">魔百和月新增用户(万)</p>
+                    <p class="number" id="mobileMonthIncreUser">0</p>
+                </div>
+            </div>
+            <!--魔百和用户周到达-->
+            <div style="flex: 1" class="mobile_user_week boxSizing">
+                <div class="text_img"></div>
+                <div id="mobile_user_week"></div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+            <div class="mobile_box_user" style="margin-top: 40px;">
+                <div class="mobile_box_user_inner">
+                    <p class="title">增值达到用户(万)</p>
+                    <p class="number" id="valueArriveUser">0</p>
+                </div>
+                <div class="mobile_box_user_inner">
+                    <p class="title title2">月净增付费用户(万)</p>
+                    <p class="number" id="monthPaymentUser">0</p>
+                </div>
+            </div>
+            <!--魔百和用户周到达-->
+            <div style="flex: 1" class="add_user_box boxSizing">
+                <div class="text_img"></div>
+                <div id="add_user_box"></div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+        </div>
+
+
+        <div style=" width: 20%; float: left;" class="main_right mainDisplayFlex">
+            <!--用户付费结构-->
+            <div style="flex: 1" class="user_pay boxSizing">
+                <div class="text_img" style="background-image: url('./images/user_payment_text.png')"></div>
+                <div id="user_pay_chart"></div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+            <!--分板块收入结构-->
+            <div style="flex: 1" class="plate_pay boxSizing">
+                <div class="text_img" style="background-image: url('./images/income_text.png')"></div>
+                <div id="plate_pay_chart" style="width: 90%; margin: 0 auto;"></div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+            <!--电视淘宝电商增长情况-->
+            <div class="tv_taobao boxSizing">
+                <div class="text_img" style="background-image: url('./images/increase_text.png')"></div>
+                <div class="tv_taobao_content">
+                    <div class="tv_taobao_inner">
+                        <p class="inner_top">日访问量</p>
+                        <p class="inner_bottom"><span id="pv">0</span><span class="cell">/人次</span></p>
+                    </div>
+                    <div class="tv_taobao_inner">
+                        <p class="inner_top">日均付款笔数</p>
+                        <p class="inner_bottom"><span id="payNum">0</span><span class="cell">笔</span></p>
+                    </div>
+                    <div class="tv_taobao_inner">
+                        <p class="inner_top">日均交易金额</p>
+                        <p class="inner_bottom"><span id="payCash">0</span><span class="cell">元</span></p>
+                    </div>
+                </div>
+                <img class="angle_img" src="./images/angle_img.png" alt="">
+                <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script src="./js/common.js"></script>
+<script src="./js/home.js"></script>
+</body>
+</html>

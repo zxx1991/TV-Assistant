@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Header</title>
+    <style>
+        header{ display: flex;}
+        .logo_text{ height: 56px; line-height: 56px; padding:0 30px 0 16px ; background: url("./images/logo_text_bg.png") no-repeat; background-size: 100% 100%;}
+        .logo_text img{ height: 28px; vertical-align: middle}
+        .logo_text span{ font-size: 24px; display: inline-block; color: #fff; vertical-align: middle; margin-left: 15px;}
+
+        .menu_time{ height: 42px; flex: 1; background-image: url("./images/header_bg.png"); background-repeat: repeat-x; background-size: auto 100%;}
+        .menu_time:after{ display: block; content: ''; clear: both;}
+        .menu_time .memu{ line-height: 42px; margin-left: 0px; float: left;}
+        .menu_time .memu a{ height: 36px; line-height: 36px; padding: 0 20px; display: inline-block; color: #4397D9; font-size: 16px; background-repeat: repeat-x; background-size: 100% 100%;}
+
+        .menu_time .time{ margin-right: 16px; float: right;}
+        .menu_time .time img{ height: 24px; max-width: 210px; margin-top: 2px;}
+        .menu_time .time p{ color: #bdbdbd; font-size: 12px; text-align: right;}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo_text">
+        <img src="./images/logo.png" alt="">
+        <span>福建移动互联网电视运营助手</span>
+    </div>
+    <div class="menu_time">
+        <div class="memu">
+            <a href="./home.html" style="background-image: url('./images/menu_bg_1.png')">家庭产品业务规模</a>
+            <a href="" style="background-image: url('./images/menu_bg_2.png')">OTT总体概况</a>
+            <a href="" style="background-image: url('./images/menu_bg_3.png')">频道收视</a>
+            <a href="" style="background-image: url('./images/menu_bg_3.png')">用户画像</a>
+        </div>
+        <div class="time">
+            <img src="./images/time_bg.png" alt="">
+            <p>2017－11-15  15:22:10</p>
+        </div>
+    </div>
+
+</header>
+
+</body>
+</html>

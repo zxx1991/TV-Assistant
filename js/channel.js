@@ -80,10 +80,10 @@
                             name:[]
                         };
                         res.data.forEach(function(item, index, arr){
-                            this.value.push(item.demandClickNum);
+                            this.value.push(item.demandclicknum);
                             this.value99.push(99.9);
                             this.value100.push(100);
-                            this.name.push(item.demandClickType);
+                            this.name.push(item.demandclicktype);
                         },demand_focus_data);
                         demand_focus('demand_focus',demand_focus_data);
 
@@ -99,8 +99,19 @@
                 url: channelUrl+"epgRatio",
                 data: {province:"福建",city:"福州"},
                 success: function (res){
+                    console.log(11111111);
                     console.log(res);
                     if(res.response_code == 100){
+
+                        let EPG_access_data = [];
+                        res.data.forEach(function(item, index, arr){
+                            this.push({
+                                value:item.epgnum,
+                                name:item.epginfo,
+                            });
+                        },EPG_access_data);
+                        EPG_access(EPG_access_data);
+
 
                     }
                 }

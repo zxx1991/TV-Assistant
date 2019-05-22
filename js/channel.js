@@ -7,19 +7,57 @@
         let videotypeArr = ['直播','点播','回看'];
 
 
+        function table_list_html(data,id) {
+
+            data.forEach(function(item, index, arr){
+                let tableList = '';
+
+                let num = index+1;
+
+                let indexClass='';
+                if(num<=3){
+                    indexClass = 'circle';
+                }else{
+                    indexClass = 'normal';
+                };
+
+                let up_down_icon='';
+                if(item.comparerate>0){
+                    up_down_icon = 'up_row';
+                }else if(item.comparerate<0){
+                    up_down_icon = 'down_row';
+                };
+
+                let comparerate = (item.comparerate*100)+'%';
+
+                tableList = '\n' +
+                    '                                <tr>\n' +
+                    '                                    <td><span class="'+ indexClass +'">'+ num+'</span></td>\n' +
+                    '                                    <td>'+item.videoname+'</td>\n' +
+                    '                                    <td>'+item.watchnum+'</td>\n' +
+                    '                                    <td><span>'+comparerate+'</span> <img class="row_btn" src="./images/'+up_down_icon+'.png"></td>\n' +
+                    '                                </tr>';
+
+                $(id).append(tableList);
+
+            });
+
+        }
+
+
         // 收视类型分析
         function channelType() {
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: channelUrl+"ratingChannel",
+                url: channelUrl+"channelType",
                 data: {province:"福建",city:"福州"},
                 success: function (res){
                     if(res.response_code == 100){
                         let viewing_type_data = [];
                         res.data.forEach(function(item, index, arr){
                             this.push({
-                                value:item.watchnum,
+                                value:item.typenum,
                                 name:videotypeArr[item.videotype-1]
                             });
                         }, viewing_type_data);
@@ -85,7 +123,7 @@
                             this.value100.push(100);
                             this.name.push(item.demandclicktype);
                         },demand_focus_data);
-                        demand_focus('demand_focus',demand_focus_data);
+                        demand_focus(demand_focus_data);
 
                     }
                 }
@@ -99,8 +137,6 @@
                 url: channelUrl+"epgRatio",
                 data: {province:"福建",city:"福州"},
                 success: function (res){
-                    console.log(11111111);
-                    console.log(res);
                     if(res.response_code == 100){
 
                         let EPG_access_data = [];
@@ -128,54 +164,77 @@
                     console.log(res);
                     if(res.response_code == 100){
 
+                        res.data.forEach(function(items, indexs, arrs){
+                            // EPG_statu_cheart
+                            let cheartID = 'EPG_hot_'+indexs;
+                            let cheartHtml = '<div class="EPG_statu" id="'+cheartID+'"></div>';
+
+                            $('#EPG_statu_cheart').append(cheartHtml);
+
+                            let EPG_hot_data = {
+                                value:[],
+                                value99:[],
+                                value100:[],
+                                name:[],
+                                title:'',
+                            };
+                            items.forEach(function(item, index, arr){
+                                EPG_hot_data['value'].push(item.epgnum);
+                                EPG_hot_data['value99'].push(item.epginfo);
+                                EPG_hot_data['value100'].push(99.9);
+                                EPG_hot_data['name'].push(100);
+                                EPG_hot_data['title'] = item.videocate;
+                            });
+
+                            EPG_hot(cheartID,EPG_hot_data);
+
+                        });
+
                     }
                 }
             })
         };
         //直播频道top10
         function liveChannelTopTen() {
-            // $.ajax({
-            //     type: "POST",
-            //     dataType: "json",
-            //     url: channelUrl+"liveChannelTopTen",
-            //     data: {province:"福建",city:"福州"},
-            //     success: function (res){
-            //         console.log(res);
-            //         if(res.response_code == 100){
-            //
-            //         }
-            //     }
-            // })
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: channelUrl+"liveChannelTopTen",
+                data: {province:"福建",city:"福州"},
+                success: function (res){
+                    if(res.response_code == 100){
+                        table_list_html(res.data,'#live_channel_top_list')
+                    }
+                }
+            })
         };
         //点播节目top10
         function demandChannelTopTen() {
-            // $.ajax({
-            //     type: "POST",
-            //     dataType: "json",
-            //     url: channelUrl+"demandChannelTopTen",
-            //     data: {province:"福建",city:"福州"},
-            //     success: function (res){
-            //         console.log(res);
-            //         if(res.response_code == 100){
-            //
-            //         }
-            //     }
-            // })
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: channelUrl+"demandChannelTopTen",
+                data: {province:"福建",city:"福州"},
+                success: function (res){
+                    if(res.response_code == 100){
+                        table_list_html(res.data,'#demand_channel_top_List')
+                    }
+                }
+            })
         };
         //热门收藏
         function hotCollection() {
-            // $.ajax({
-            //     type: "POST",
-            //     dataType: "json",
-            //     url: channelUrl+"hotCollection",
-            //     data: {province:"福建",city:"福州"},
-            //     success: function (res){
-            //         console.log(res);
-            //         if(res.response_code == 100){
-            //
-            //         }
-            //     }
-            // })
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: channelUrl+"hotCollection",
+                data: {province:"福建",city:"福州"},
+                success: function (res){
+                    if(res.response_code == 100){
+                        hot_collection(res.data)
+                    }
+                }
+            })
         }
 
 
@@ -193,9 +252,9 @@
         allRequest();
 
 
-/*        setInterval(function () {
+        setInterval(function () {
             allRequest();
-        },30000);*/
+        },30000);
 
 
 
@@ -377,7 +436,7 @@
 
         /*  ------------------------------用户点播业务------------------------------ */
         // 点播分屏点击关注度
-        function demand_focus(id,data) {
+        function demand_focus(data) {
             /*var data = {
                 value:[50, 66, 33, 25, 25],
                 value99:[99.9, 99.9, 99.9, 99.9, 99.9],
@@ -385,7 +444,7 @@
                 name:['TOP1智能科技', 'TOP1人工科技', 'TOP1智能装备', 'TOP1核能科技', 'TOP1核能科技']
             };*/
 
-            let city_ARPU_dom = document.getElementById(id);
+            let city_ARPU_dom = document.getElementById('demand_focus');
             let myChart = echarts.init(city_ARPU_dom);
             // var myColor = ['#012767'];
             var option = {
@@ -559,29 +618,18 @@
             };
             myChart.setOption(option, true);
         }
-        var EPG_access_data = [
-            {value:56, name:'电影'},
-            {value:676, name:'电视剧'},
-            {value:242, name:'少儿'},
-            {value:234, name:'综艺'},
-            {value:23, name:'娱乐'},
-            {value:980, name:'体育'},
-            {value:890, name:'教育'},
-            {value:67, name:'生活'},
-            {value:234, name:'纪实'}
-        ];
-        EPG_access(EPG_access_data);
+
 
 
         // 点播分屏点击关注度
         function EPG_hot(id,data) {
-            var data = {
+            /*var data = {
                 value:[50, 66, 33, 25, 25],
                 value99:[99.9, 99.9, 99.9, 99.9, 99.9],
                 value100:[100, 100, 100, 100, 100],
                 name:['TOP1      智能科技', 'TOP1      人工科技', 'TOP1      智能装备', 'TOP1      核能科技', 'TOP1      核能科技'],
                 title:'电影',
-            };
+            };*/
 
             let city_ARPU_dom = document.getElementById(id);
             let myChart = echarts.init(city_ARPU_dom);
@@ -699,10 +747,7 @@
             }
             myChart.setOption(option, true);
         }
-        EPG_hot('EPG_hot_A');
-        EPG_hot('EPG_hot_B');
-        EPG_hot('EPG_hot_C');
-        EPG_hot('EPG_hot_D');
+
 
 
 
@@ -711,14 +756,14 @@
 
 
         //热门收藏
-        var s=new randomTagDiv();
-        s.init({
-            tagObjs:[
-                "古装剧","随时","随时随地","内容丰富","高学历","90后","丁克","白领","有车族","高薪","未婚","高学历","90后","丁克","古装剧","随时","随时随地","内容丰富","高学历"
-            ],
-            tagHeight:20
-        });
-        s.show($("#hot_collection"));
+        function hot_collection(labelArr) {
+            var s=new randomTagDiv();
+            s.init({
+                tagObjs:labelArr,
+                tagHeight:20
+            });
+            s.show($("#hot_collection"));
+        }
 
 
     })

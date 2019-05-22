@@ -70,11 +70,11 @@
                         <!--热门EPG访问情况-->
                     <div class="main_chart" style="width: 42%;">
                         <div class="main_chart_title"><p>热门EPG访问情况</p></div>
-                        <div style=" height: calc(100% - 40px - 54px);">
-                            <div class="EPG_statu" id="EPG_hot_A"></div>
+                        <div style=" height: calc(100% - 40px - 54px);" id="EPG_statu_cheart">
+                            <!--<div class="EPG_statu" id="EPG_hot_A"></div>
                             <div class="EPG_statu" id="EPG_hot_B"></div>
                             <div class="EPG_statu" id="EPG_hot_C"></div>
-                            <div class="EPG_statu" id="EPG_hot_D"></div>
+                            <div class="EPG_statu" id="EPG_hot_D"></div>-->
                         </div>
                     </div>
                 </div>
@@ -87,72 +87,28 @@
                     <div class="text_img" style="background-image: url('./images/live_channel_top_text.png')"></div>
                     <div id="live_channel_top" style="padding: 25px 15px 15px 15px;">
                         <table>
-                            <tr>
-                                <th>排名</th>
-                                <th>频道名称</th>
-                                <th>收视用户数</th>
-                                <th>同期增幅</th>
-                            </tr>
-                            <tr>
-                                <td><span class="circle">1</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="circle">2</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="circle">3</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">4</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">5</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">6</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">7</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">8</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">9</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">10</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>频道名称</th>
+                                    <th>收视用户数</th>
+                                    <th>同期增幅</th>
+                                </tr>
+                            </thead>
+                            <tbody id="live_channel_top_list">
+                               <!-- <tr>
+                                    <td><span class="circle">1</span></td>
+                                    <td>逆流而上的你</td>
+                                    <td>68.258</td>
+                                    <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png"></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="circle">2</span></td>
+                                    <td>逆流而上的你</td>
+                                    <td>68.258</td>
+                                    <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
+                                </tr>-->
+                            </tbody>
 
                         </table>
                     </div>
@@ -164,72 +120,28 @@
                     <div class="text_img" style="background-image: url('./images/demand_channel_top_text.png')"></div>
                     <div id="demand_channel_top" style="padding: 25px 15px 15px 15px;">
                         <table>
-                            <tr>
-                                <th>排名</th>
-                                <th>频道名称</th>
-                                <th>收视用户数</th>
-                                <th>同期增幅</th>
-                            </tr>
-                            <tr>
-                                <td><span class="circle">1</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="circle">2</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="circle">3</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">4</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">5</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">6</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">7</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">8</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">9</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
-                            <tr>
-                                <td><span class="normal">10</span></td>
-                                <td>逆流而上的你</td>
-                                <td>68.258</td>
-                                <td><span>-52%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>频道名称</th>
+                                    <th>收视用户数</th>
+                                    <th>同期增幅</th>
+                                </tr>
+                            </thead>
+                            <tbody id="demand_channel_top_List">
+                              <!--  <tr>
+                                    <td><span class="circle">1</span></td>
+                                    <td>逆流而上的你</td>
+                                    <td>68.258</td>
+                                    <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="circle">2</span></td>
+                                    <td>逆流而上的你</td>
+                                    <td>68.258</td>
+                                    <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
+                                </tr>-->
+                            </tbody>
 
                         </table>
                     </div>

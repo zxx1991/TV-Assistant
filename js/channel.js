@@ -163,6 +163,7 @@
                 success: function (res){
                     console.log(res);
                     if(res.response_code == 100){
+                        let topIndex = ['TOP1    ','TOP2    ','TOP3    ','TOP4    ','TOP5    ']
 
                         res.data.forEach(function(items, indexs, arrs){
                             // EPG_statu_cheart
@@ -179,12 +180,13 @@
                                 title:'',
                             };
                             items.forEach(function(item, index, arr){
-                                EPG_hot_data['value'].push(item.epgnum);
-                                EPG_hot_data['value99'].push(item.epginfo);
-                                EPG_hot_data['value100'].push(99.9);
-                                EPG_hot_data['name'].push(100);
+                                EPG_hot_data['value'].unshift(item.epgnum);
+                                EPG_hot_data['value99'].unshift(99.9);
+                                EPG_hot_data['value100'].unshift(100);
+                                EPG_hot_data['name'].unshift(topIndex[index]+item.epginfo);
                                 EPG_hot_data['title'] = item.videocate;
                             });
+                            console.log(EPG_hot_data)
 
                             EPG_hot(cheartID,EPG_hot_data);
 
@@ -650,7 +652,7 @@
                 grid: {
                     left: 0,
                     top: 30,
-                    right: 20,
+                    right: 0,
                     bottom: 0,
                     containLabel: true
                 },
@@ -658,10 +660,14 @@
                     show: false
                 }],
                 yAxis: [{
+                    offset:90,
                     axisTick: 'none',
                     axisLine: 'none',
                     axisLabel:{
-                        margin:35,
+                        textStyle: {
+                            align:'left',
+                        },
+                        margin:25
                     },
                     data: data.name
                 }, {

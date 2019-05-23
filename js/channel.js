@@ -31,12 +31,12 @@
                 let comparerate = (item.comparerate*100)+'%';
 
                 tableList = '\n' +
-                    '                                <tr>\n' +
-                    '                                    <td><span class="'+ indexClass +'">'+ num+'</span></td>\n' +
-                    '                                    <td>'+item.videoname+'</td>\n' +
-                    '                                    <td>'+item.watchnum+'</td>\n' +
-                    '                                    <td><span>'+comparerate+'</span> <img class="row_btn" src="./images/'+up_down_icon+'.png"></td>\n' +
-                    '                                </tr>';
+                    '                                <ul>\n' +
+                    '                                    <li class="tableTD tableTD_a"><span class="'+ indexClass +'">'+ num+'</span></li>\n' +
+                    '                                    <li class="tableTD tableTD_b">'+item.videoname+'</li>\n' +
+                    '                                    <li class="tableTD tableTD_c">'+item.watchnum+'</li>\n' +
+                    '                                    <li class="tableTD tableTD_d"><span>'+comparerate+'</span> <img class="row_btn" src="./images/'+up_down_icon+'.png"></li>\n' +
+                    '                                </ul>';
 
                 $(id).append(tableList);
 
@@ -163,7 +163,6 @@
                 success: function (res){
                     console.log(res);
                     if(res.response_code == 100){
-                        let topIndex = ['TOP1    ','TOP2    ','TOP3    ','TOP4    ','TOP5    ']
 
                         res.data.forEach(function(items, indexs, arrs){
                             // EPG_statu_cheart
@@ -180,13 +179,12 @@
                                 title:'',
                             };
                             items.forEach(function(item, index, arr){
-                                EPG_hot_data['value'].unshift(item.epgnum);
-                                EPG_hot_data['value99'].unshift(99.9);
-                                EPG_hot_data['value100'].unshift(100);
-                                EPG_hot_data['name'].unshift(topIndex[index]+item.epginfo);
+                                EPG_hot_data['value'].push(item.epgnum);
+                                EPG_hot_data['value99'].push(99.9);
+                                EPG_hot_data['value100'].push(100);
+                                EPG_hot_data['name'].push(item.epginfo);
                                 EPG_hot_data['title'] = item.videocate;
                             });
-                            console.log(EPG_hot_data)
 
                             EPG_hot(cheartID,EPG_hot_data);
 
@@ -205,7 +203,10 @@
                 data: {province:"福建",city:"福州"},
                 success: function (res){
                     if(res.response_code == 100){
-                        table_list_html(res.data,'#live_channel_top_list')
+                        table_list_html(res.data,'#live_channel_top_list');
+                        $('#live_channel_top_list').liMarquee({
+                            direction: 'up'
+                        });
                     }
                 }
             })
@@ -219,7 +220,10 @@
                 data: {province:"福建",city:"福州"},
                 success: function (res){
                     if(res.response_code == 100){
-                        table_list_html(res.data,'#demand_channel_top_List')
+                        table_list_html(res.data,'#demand_channel_top_List');
+                        $('#demand_channel_top_List').liMarquee({
+                            direction: 'up'
+                        });
                     }
                 }
             })
@@ -652,18 +656,33 @@
                 grid: {
                     left: 0,
                     top: 30,
-                    right: 0,
+                    right: 15,
                     bottom: 0,
                     containLabel: true
                 },
                 xAxis: [{
-                    show: false
+                    show: false,
                 }],
                 yAxis: [{
-                    offset:90,
+                    triggerEvent:true,
+                    inverse:true,
+                    offset:100,
                     axisTick: 'none',
                     axisLine: 'none',
                     axisLabel:{
+                        formatter: function (value, index) {
+                            let nameStr = 'TOP'+(index+1)+'    '+value;
+
+                            if (nameStr.length > 12) {
+                                nameStr = nameStr.substring(0, 12) + '...';
+                            } else if (nameStr.length < 12) {
+                                let nullStr = '                       ';
+                                nameStr = nameStr + nullStr.substr(0, 15 - nameStr.length);
+                            } else {
+                                nameStr = nameStr + '   ';
+                            }
+                            return nameStr;
+                        },
                         textStyle: {
                             align:'left',
                         },
@@ -752,10 +771,218 @@
                     }]
             }
             myChart.setOption(option, true);
+
+            myChart.on('mouseover', function (params) {
+                if (params.componentType === 'yAxis') {
+                    let offsetX = params.event.offsetX + 10;
+                    let offsetY = params.event.offsetY + 10;
+                    myChart.setOption({
+                        tooltip: {
+                            alwaysShowContent: true,
+                            formatter: function () {
+                                return params.value
+                            }
+                        }
+                    })
+                    myChart.dispatchAction({
+                        type: 'showTip',
+                        seriesIndex: 0,
+                        dataIndex: 0,
+                        position: [offsetX, offsetY]
+                    })
+                }
+            });
+
+            myChart.on('mouseout', function (params) {
+                if (params.componentType === 'yAxis') {
+                    myChart.setOption({
+                        tooltip: {
+                            alwaysShowContent: false
+                        }
+                    })
+                }
+            })
+
+
+        }
+/*        function EPG_hotAA(id,data) {
+            var data = {
+                value:[50, 66, 33, 25, 25],
+                value99:[99.9, 99.9, 99.9, 99.9, 99.9],
+                value100:[100, 100, 100, 100, 100],
+                name:['TOP1技', 'TOP', 'TO装备', 'TOP1e科技', 'TOP143科技'],
+                title:'电影',
+            };
+
+            let city_ARPU_dom = document.getElementById('EPG_statu_cheart');
+            let myChart = echarts.init(city_ARPU_dom);
+            var option = {
+                title:{
+                    text:data.title,
+                    textStyle:{
+                        fontSize:16,
+                        color:'#21E7F9',
+                        fontWeight:'normal'
+                    }
+                },
+                textStyle:{
+                    fontSize: 14,
+                    color:'#D0DCFE'
+                },
+                grid: {
+                    left: 0,
+                    top: 30,
+                    right: 15,
+                    bottom: 0,
+                    containLabel: true
+                },
+                xAxis: [{
+                    show: false,
+                }],
+                yAxis: [{
+                    triggerEvent:true,
+                    inverse:true,
+                    offset:100,
+                    axisTick: 'none',
+                    axisLine: 'none',
+                    axisLabel:{
+                        formatter: function (value, index) {
+                            let nameStr = 'TOP'+(index+1)+'    '+value;
+
+                            if (nameStr.length > 12) {
+                                nameStr = nameStr.substring(0, 12) + '...';
+                            } else if (nameStr.length < 12) {
+                                let nullStr = '                       ';
+                                nameStr = nameStr + nullStr.substr(0, 15 - nameStr.length);
+                            } else {
+                                nameStr = nameStr + '   ';
+                            }
+                            return nameStr;
+                        },
+                        textStyle: {
+                            align:'left',
+                        },
+                        margin:25
+                    },
+                    data: data.name
+                }, {
+                    axisTick: 'none',
+                    axisLine: 'none',
+                    show: false,
+                    data: data.value
+                }, {
+                    axisTick: 'none',
+                    axisLine: 'none',
+                    show: false,
+                    data: []
+                }],
+                series: [{
+                    name: '条',
+                    type: 'bar',
+                    stack: '圆',
+                    yAxisIndex: 0,
+                    data: data.value,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'right',
+                            formatter: function(param) {
+                                return param.value + '%'
+                            },
+                        }
+                    },
+                    barWidth: 10,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius: 5,
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                                offset: 0,
+                                color: '#02C768'
+                            }, {
+                                offset: 1,
+                                color: '#1A73F8'
+                            }]),
+                        }
+                    },
+                    z: 2
+                }, {
+                    name: '白框',
+                    type: 'bar',
+                    yAxisIndex: 1,
+                    barGap: '-100%',
+                    data: data.value99,
+                    barWidth: 10,
+                    itemStyle: {
+                        normal: {
+                            barBorderRadius: 5,
+                            color:'#012767'
+                        }
+                    },
+                    z: 1
+                },
+                    {
+                        name: '外框',
+                        type: 'bar',
+                        yAxisIndex: 2,
+                        barGap: '-100%',
+                        data: data.value100,
+                        barWidth: 10,
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'right',
+                                formatter: function(thisData) {
+                                    return data.value[thisData.dataIndex] +"%";
+                                },
+                                barBorderRadius: 5
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                color:'#012767',
+                                barBorderRadius: 5
+                            }
+                        },
+                        z: 0
+                    }]
+            }
+            myChart.setOption(option, true);
+
+            myChart.on('mouseover', function (params) {
+                if (params.componentType === 'yAxis') {
+                    let offsetX = params.event.offsetX + 10;
+                    let offsetY = params.event.offsetY + 10;
+                    myChart.setOption({
+                        tooltip: {
+                            alwaysShowContent: true,
+                            formatter: function () {
+                                return params.value
+                            }
+                        }
+                    })
+                    myChart.dispatchAction({
+                        type: 'showTip',
+                        seriesIndex: 0,
+                        dataIndex: 0,
+                        position: [offsetX, offsetY]
+                    })
+                }
+            });
+
+            myChart.on('mouseout', function (params) {
+                if (params.componentType === 'yAxis') {
+                    myChart.setOption({
+                        tooltip: {
+                            alwaysShowContent: false
+                        }
+                    })
+                }
+            })
+
+            
         }
 
-
-
+        EPG_hotAA()*/
 
 
 
@@ -770,6 +997,12 @@
             });
             s.show($("#hot_collection"));
         }
+
+
+
+
+
+
 
 
     })

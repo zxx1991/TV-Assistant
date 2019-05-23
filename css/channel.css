@@ -46,20 +46,20 @@
 
 
 
-#demand_channel_top{
+/*#demand_channel_top{
 	height: 100%;
 	overflow-y: scroll;
 }
 #demand_channel_top::-webkit-scrollbar {
 	width: 0;
-}
-#live_channel_top{
+}*/
+/*#live_channel_top{
 	height: 100%;
 	overflow-y: scroll;
 }
 #live_channel_top::-webkit-scrollbar {
 	width: 0;
-}
+}*/
 /*table样式*/
 table{
 	width: 100%;
@@ -75,22 +75,37 @@ table tr th{
 	font-size: 12px;
 	text-align: center;
 }
+
+
 table tr td{
 	line-height: 19px;
 	color: #D0DCFE;
 	font-size: 12px;
 	text-align: center;
 }
-table tr th:first-child,table tr td:first-child{
+
+ul{ display: block; content: ''; clear: both}
+.tableTD{ float: left; color: #fff; text-align: center}
+
+
+table thead th:first-child,
+table tbody td:first-child,
+.tableTD_a{
 	width: 10%;
 }
-table tr th:nth-child(2),table tr td:nth-child(2){
+table thead th:nth-child(2),
+table tbody td:nth-child(2),
+.tableTD_b{
 	width: 35%;
 }
-table tr th:nth-child(3),table tr td:nth-child(3){
+table thead th:nth-child(3),
+table tbody td:nth-child(3),
+.tableTD_c{
 	width: 35%;
 }
-table tr th:nth-child(4),table tr td:nth-child(4){
+table thead th:nth-child(4),
+table tbody td:nth-child(4),
+.tableTD_d{
 	width: 20%;
 }
 .circle{
@@ -110,3 +125,7 @@ table tr th:nth-child(4),table tr td:nth-child(4){
 }
 
 
+
+
+
+.liMarquee { position: absolute; width: calc(100% - 30px); height: calc(100% - 70px); background-color: transparent;}

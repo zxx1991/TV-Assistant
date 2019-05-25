@@ -6,13 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <link rel="stylesheet" type="text/css" href="./css/liMarquee.css">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./css/common.css">
     <link rel="stylesheet" type="text/css" href="./css/channel.css">
+    <!--标签-->
+    <style type="text/css">
+        #tagscloud{position:relative; width: 100%; height: 100%;}
+        #tagscloud a{position:absolute;top:0px;left:0px; color: #fff; padding: 3px 5px; border-radius: 3px;}
+    </style>
 </head>
 
 <body>
+
 <div class="c_all_box">
     <div id="header_box"></div>
 
@@ -84,9 +89,9 @@
             <!-------------- right-botton --------------->
             <div class="comtent_bottom">
                 <!--直播频道TOP10-->
-                <div style="width: calc(36% - 25px); margin-right: 25px; float: left;" class="cheart_comtent cheart_border">
+                <div id="live_list_bar" style="width: calc(36% - 25px); margin-right: 25px; float: left;" class="cheart_comtent cheart_border">
                     <div class="text_img" style="background-image: url('./images/live_channel_top_text.png')"></div>
-                    <div id="live_channel_top" style="padding: 25px 15px 15px 15px;">
+                    <div style="padding: 25px 15px 15px 15px;">
                         <table>
                             <thead>
                                 <tr>
@@ -96,30 +101,18 @@
                                     <th>同期增幅</th>
                                 </tr>
                             </thead>
-                            <tbody id="live_channel_top_list" class="liMarquee">
-                               <!-- <tr>
-                                    <td><span class="circle">1</span></td>
-                                    <td>逆流而上的你</td>
-                                    <td>68.258</td>
-                                    <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png"></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="circle">2</span></td>
-                                    <td>逆流而上的你</td>
-                                    <td>68.258</td>
-                                    <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
-                                </tr>-->
-                            </tbody>
-
                         </table>
+                        <div id="marquee_B" class="marquee_list">
+                            <ul id="live_list"></ul>
+                        </div>
                     </div>
                     <img class="angle_img" src="./images/angle_img.png" alt="">
                     <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
                 </div>
                 <!--点播频道TOP10-->
-                <div style="width: calc(36% - 25px); margin-right: 25px; float: left;" class="cheart_comtent cheart_border">
+                <div id="marquee_A_bar" style="width: calc(36% - 25px); margin-right: 25px; float: left;" class="cheart_comtent cheart_border">
                     <div class="text_img" style="background-image: url('./images/demand_channel_top_text.png')"></div>
-                    <div id="demand_channel_top" style="padding: 25px 15px 15px 15px;">
+                    <div style="padding: 25px 15px 15px 15px;">
                         <table>
                             <thead>
                                 <tr>
@@ -129,22 +122,10 @@
                                     <th>同期增幅</th>
                                 </tr>
                             </thead>
-                            <tbody id="demand_channel_top_List" class="liMarquee">
-                              <!--  <tr>
-                                    <td><span class="circle">1</span></td>
-                                    <td>逆流而上的你</td>
-                                    <td>68.258</td>
-                                    <td><span>+19%</span> <img class="row_btn" src="./images/up_row.png" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td><span class="circle">2</span></td>
-                                    <td>逆流而上的你</td>
-                                    <td>68.258</td>
-                                    <td><span>-52%</span> <img class="row_btn" src="./images/down_row.png" alt=""></td>
-                                </tr>-->
-                            </tbody>
-
                         </table>
+                        <div id="marquee_A" class="marquee_list">
+                            <ul id="on_demand_list"></ul>
+                        </div>
                     </div>
                     <img class="angle_img" src="./images/angle_img.png" alt="">
                     <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
@@ -152,7 +133,7 @@
                 <!--热门收藏-->
                 <div style="width: 28%; float: left;" class="cheart_comtent cheart_border">
                     <div class="text_img" style="background-image: url('./images/hot_collection_text.png')"></div>
-                    <div id="hot_collection" style="height: 70%; width: 80%; position: absolute; top: 15%; left: 10%;"></div>
+                    <div id="tagscloud"></div>
                     <img class="angle_img" src="./images/angle_img.png" alt="">
                     <!--<img class="right_angle_img" src="./images/right_angle_img.png" alt="">-->
                 </div>
@@ -162,11 +143,12 @@
     </div>
 </div>
 <script src="./js/jquery.min.js"></script>
-<script src="./js/jquery.liMarquee.js"></script>
+<script src="./js/tagscloud.js"></script>
+<script src="./js/jquery.kxbdmarquee.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/echarts.min.js"></script>
-<script src="./js/randomtagdiv.js"></script>
 <script src="./js/common.js"></script>
 <script src="./js/channel.js"></script>
+
 </body>
 </html>

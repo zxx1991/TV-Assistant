@@ -84,9 +84,6 @@ table tr td{
 	text-align: center;
 }
 
-ul{ display: block; content: ''; clear: both}
-.tableTD{ float: left; color: #fff; text-align: center}
-
 
 table thead th:first-child,
 table tbody td:first-child,
@@ -120,12 +117,20 @@ table tbody td:nth-child(4),
 	width: 7px;
 	height: 19px;
 	position: relative;
-	top: 5px;
+	top: -2px;
 	left: 4px;
 }
 
 
 
 
+.marquee_list{ width: 100%; /*height: calc(100% - 70px);*/ overflow: hidden; color: #D0DCFE; margin-top: 5px;position: relative;}
+.marquee_list ul{width: 100%}
+.marquee_list ul li{ margin: 10px 0;vertical-align: middle;}
+.marquee_list ul li:after{ display: block; content: ''; clear: both;}
+.marquee_list a{ display: inline-block; float: left; text-align: center; vertical-align: middle; line-height: 100%}
+.marquee_list a img{ vertical-align: middle; line-height: 100%}
 
-.liMarquee { position: absolute; width: calc(100% - 30px); height: calc(100% - 70px); background-color: transparent;}
+
+
+

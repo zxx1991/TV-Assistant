@@ -3,12 +3,17 @@
 
     $(document).ready(function (){
 
+        function color_rgb(){
+            var r=Math.floor(Math.random()*256);
+            var g=Math.floor(Math.random()*256);
+            var b=Math.floor(Math.random()*256);
+            return "rgb("+r+','+g+','+b+")";//所有方法的拼接都可以用ES6新特性`其他字符串{$变量名}`替换
+        }
 
         let videotypeArr = ['直播','点播','回看'];
 
 
         function table_list_html(data,id) {
-
             data.forEach(function(item, index, arr){
                 let tableList = '';
 
@@ -31,17 +36,16 @@
                 let comparerate = (item.comparerate*100)+'%';
 
                 tableList = '\n' +
-                    '                                <ul>\n' +
-                    '                                    <li class="tableTD tableTD_a"><span class="'+ indexClass +'">'+ num+'</span></li>\n' +
-                    '                                    <li class="tableTD tableTD_b">'+item.videoname+'</li>\n' +
-                    '                                    <li class="tableTD tableTD_c">'+item.watchnum+'</li>\n' +
-                    '                                    <li class="tableTD tableTD_d"><span>'+comparerate+'</span> <img class="row_btn" src="./images/'+up_down_icon+'.png"></li>\n' +
-                    '                                </ul>';
+                    '                                <li>\n' +
+                    '                                    <a class="tableTD_a"><span class="'+ indexClass +'">'+ num+'</span></a>\n' +
+                    '                                    <a class="tableTD_b">'+item.videoname+'</a>\n' +
+                    '                                    <a class="tableTD_c">'+item.watchnum+'</a>\n' +
+                    '                                    <a class="tableTD_d"><span>'+comparerate+'</span> <img class="row_btn" src="./images/'+up_down_icon+'.png"></a>\n' +
+                    '                                </li>';
 
                 $(id).append(tableList);
 
             });
-
         }
 
 
@@ -161,8 +165,8 @@
                 url: channelUrl+"hotEpgRatio",
                 data: {province:"福建",city:"福州"},
                 success: function (res){
-                    console.log(res);
                     if(res.response_code == 100){
+                        $('#EPG_statu_cheart').empty();
 
                         res.data.forEach(function(items, indexs, arrs){
                             // EPG_statu_cheart
@@ -195,6 +199,7 @@
             })
         };
         //直播频道top10
+        $('#marquee_B').height(($('#live_list_bar').height() - 70));
         function liveChannelTopTen() {
             $.ajax({
                 type: "POST",
@@ -203,15 +208,14 @@
                 data: {province:"福建",city:"福州"},
                 success: function (res){
                     if(res.response_code == 100){
-                        table_list_html(res.data,'#live_channel_top_list');
-                        $('#live_channel_top_list').liMarquee({
-                            direction: 'up'
-                        });
+                        table_list_html(res.data,'#live_list');
+                        $("#marquee_B").kxbdMarquee({direction:"up",scrollDelay:100});
                     }
                 }
             })
         };
         //点播节目top10
+        $('#marquee_A').height(($('#marquee_A_bar').height() - 70));
         function demandChannelTopTen() {
             $.ajax({
                 type: "POST",
@@ -220,10 +224,8 @@
                 data: {province:"福建",city:"福州"},
                 success: function (res){
                     if(res.response_code == 100){
-                        table_list_html(res.data,'#demand_channel_top_List');
-                        $('#demand_channel_top_List').liMarquee({
-                            direction: 'up'
-                        });
+                        table_list_html(res.data,'#on_demand_list');
+                        $("#marquee_A").kxbdMarquee({direction:"up",scrollDelay:100});
                     }
                 }
             })
@@ -237,7 +239,11 @@
                 data: {province:"福建",city:"福州"},
                 success: function (res){
                     if(res.response_code == 100){
-                        hot_collection(res.data)
+                        res.data.forEach(function (item,index) {
+                            let labelHtml ='<a style=" background-color: '+color_rgb()+'">'+item+'</a>';
+                            $('#tagscloud').append(labelHtml);
+                        });
+                        PersonalityLabel();
                     }
                 }
             })
@@ -245,22 +251,27 @@
 
 
 
+
+
+
+
+        demandChannelTopTen();
+        liveChannelTopTen();
+        hotCollection();
+
         function allRequest() {
             channelType();
             ratingChannel();
             demandItems();
             epgRatio();
             hotEpgRatio();
-            liveChannelTopTen();
-            demandChannelTopTen();
-            hotCollection();
         };
         allRequest();
 
 
         setInterval(function () {
             allRequest();
-        },30000);
+        },2000);
 
 
 
@@ -984,19 +995,6 @@
 
         EPG_hotAA()*/
 
-
-
-
-
-        //热门收藏
-        function hot_collection(labelArr) {
-            var s=new randomTagDiv();
-            s.init({
-                tagObjs:labelArr,
-                tagHeight:20
-            });
-            s.show($("#hot_collection"));
-        }
 
 
 

@@ -271,7 +271,7 @@
 
         setInterval(function () {
             allRequest();
-        },2000);
+        },30000);
 
 
 

@@ -3,6 +3,7 @@
 
     $(document).ready(function () {
 
+        console.log(123)
 
         //显示当前时间
         function getDate() {

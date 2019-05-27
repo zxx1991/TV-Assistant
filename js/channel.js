@@ -292,7 +292,7 @@
                     left:'80%',
                     itemWidth:13,
                     itemHeight:13,
-                    textStyle: {color: '#6691BC',fontSize:'12px'},
+                    textStyle: {color: '#fff',fontWeight : 'bold',fontSize:'12px'},
                     data: videotypeArr
                 },
                 series : [
@@ -306,7 +306,8 @@
                                 show:true,
                                 position:'inner', //标签的位置
                                 textStyle : {
-                                    fontWeight : 300 ,
+                                    textBorderColor:'transparent',
+                                    fontWeight : 'bold',
                                     fontSize : 12    //文字的字体大小
                                 },
                                 formatter:'{d}%'
